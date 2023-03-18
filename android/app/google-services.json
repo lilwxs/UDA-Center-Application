@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "173725847669",
+    "project_id": "uda-center",
+    "storage_bucket": "uda-center.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173725847669:android:79ca3d157e81c65d57683c",
+        "android_client_info": {
+          "package_name": "com.example.uda_std_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173725847669-r2h76hka2kfnvp966krrr433emmdjdfo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhG4O75UjmXR4ekxex6bo_FWhh9thvSF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173725847669-r2h76hka2kfnvp966krrr433emmdjdfo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
