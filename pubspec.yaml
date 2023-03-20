@@ -47,6 +47,11 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   ionicons: ^0.2.2
   firebase_core_platform_interface: ^4.5.3
+  flutter_native_splash: ^2.2.19
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logosplash.png
 
 dev_dependencies:
   flutter_test:

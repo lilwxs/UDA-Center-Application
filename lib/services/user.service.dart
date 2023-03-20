@@ -14,6 +14,14 @@ class UserService {
     return response.data["data"] as String;
   }
 
+  static Future<String> forgotPasswordService(String idsv) async {
+    final response = await UserService()
+        .appService
+        .network
+        .post('/users/forgot', data: {'idsv': idsv});
+    return response.data["data"] as String;
+  }
+
   static Future<User> updateUser(
       String idsv, String cccd, String phone, String address) async {
     final res = await UserService().appService.network.patch(

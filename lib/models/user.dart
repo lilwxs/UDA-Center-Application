@@ -4,9 +4,8 @@ import 'class_name.dart';
 
 part 'user.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class User {
-
   String id;
   String idsv;
   String name;
@@ -26,13 +25,13 @@ class User {
     required this.address,
     required this.phone,
     required this.className,
-    required this.createdAt
+    required this.createdAt,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
   /// `toJson` is the convention for a class to declare support for serialization
   /// to JSON. The implementation simply calls the private, generated
   /// helper method `_$EventToJson`.
   Map<String, dynamic> toJson() => _$UserToJson(this);
-
 }
