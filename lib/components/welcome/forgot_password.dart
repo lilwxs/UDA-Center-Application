@@ -4,8 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:uda_std_application/controllers/welcome_controller.dart';
 import 'package:uda_std_application/theme/color.dart';
 import 'package:uda_std_application/theme/input.dart';
-
-import '../../views/welcome_view.dart';
+import 'package:uda_std_application/views/welcome_view.dart';
 
 class ForgotPass extends StatelessWidget {
   ForgotPass({Key? key}) : super(key: key);
@@ -85,21 +84,22 @@ class ForgotPass extends StatelessWidget {
     );
   }
 
-  showAlertDialog(BuildContext context) {
-    // set up the button
-    Widget okButton = TextButton(
-      child: Text("OK"),
-      onPressed: () {
-        Get.offNamed(WelcomeView.route);
-      },
-    );
+  void showAlertDialog(BuildContext context) {
+    const String title = "Thông báo";
+    const String content = "Hãy kiểm tra email của bạn.";
+    const String okButtonText = "OK";
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Thông báo"),
-      content: Text("Hãy kiểm tra email của bạn."),
+      title: Text(title),
+      content: Text(content),
       actions: [
-        okButton,
+        TextButton(
+          child: Text(okButtonText),
+          onPressed: () {
+            Get.offNamed(WelcomeView.route);
+          },
+        ),
       ],
     );
 
