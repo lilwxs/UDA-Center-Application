@@ -9,6 +9,14 @@ class WelcomeController extends GetxController {
   RxString mssv = RxString('');
   RxString password = RxString('');
 
+  RxString idsv = RxString('');
+  RxString name = RxString('');
+  RxString department = RxString('');
+  RxString cccd = RxString('');
+  RxString address = RxString('');
+  RxString phone = RxString('');
+  RxString className = RxString('');
+
   RxBool showPass = RxBool(false);
 
   RxBool loading = RxBool(false);
@@ -41,7 +49,6 @@ class WelcomeController extends GetxController {
     loading.value = true;
     try {
       String token = await UserService.forgotPasswordService(mssv.value);
-      print("token" + token);
       if (token != null || token != "") {
         Get.offNamed(WelcomeView.route);
       } else {
@@ -51,4 +58,21 @@ class WelcomeController extends GetxController {
     loading.value = false;
   }
 
+  // Register
+  Future<void> register() async {
+    loading.value = true;
+    try {
+      String token = await UserService.register(
+          idsv.value,
+          password.value,
+          name.value,
+          department.value,
+          cccd.value,
+          address.value,
+          phone.value,
+          className.value);
+      Get.offNamed(WelcomeView.route);
+    } catch (_) {}
+    loading.value = false;
+  }
 }
