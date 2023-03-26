@@ -14,6 +14,29 @@ class UserService {
     return response.data["data"] as String;
   }
 
+  static Future<String> register(
+      String idsv,
+      String password,
+      String name,
+      String department,
+      String cccd,
+      String address,
+      String phone,
+      String className) async {
+    final response =
+        await UserService().appService.network.post('/users', data: {
+      'idsv': idsv,
+      'password': password,
+      'name': name,
+      'department': department,
+      'cccd': cccd,
+      'address': address,
+      'phone': phone,
+      'className':className
+    });
+    return response.data["data"] as String;
+  }
+
   static Future<String> forgotPasswordService(String idsv) async {
     final response = await UserService()
         .appService
