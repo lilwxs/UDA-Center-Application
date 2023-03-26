@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:uda_std_application/components/welcome/login_form.dart';
 
 class WelcomeView extends StatefulWidget {
@@ -12,18 +11,6 @@ class WelcomeView extends StatefulWidget {
 }
 
 class _WelcomeViewState extends State<WelcomeView> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    initialize();
-  }
-
-  void initialize() async {
-    await Future.delayed(const Duration(seconds: 0));
-    FlutterNativeSplash.remove();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
