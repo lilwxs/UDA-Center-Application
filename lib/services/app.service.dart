@@ -31,7 +31,7 @@ class AppService extends GetxService {
     _dio.options.headers['Authorization'] = 'Bearer $_token';
     // Link API
     // https://api-qlsinhvien.herokuapp.com/
-    _dio.options.baseUrl = 'http://172.16.14.29:3000/';
+    _dio.options.baseUrl = 'https://apiqlsv.onrender.com';
 
     return _dio;
   }

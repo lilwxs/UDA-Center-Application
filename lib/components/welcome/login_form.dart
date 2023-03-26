@@ -1,16 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:uda_std_application/components/welcome/forgot_password.dart';
 import 'package:uda_std_application/controllers/welcome_controller.dart';
 import 'package:uda_std_application/theme/color.dart';
 
 import '../../theme/input.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   LoginForm({Key? key}) : super(key: key);
 
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  // Remember me feature
+  bool isChecked = false;
+  TextEditingController mssv = TextEditingController();
+  TextEditingController password = TextEditingController();
+  late Box box1;
+
   final WelcomeController c = Get.find<WelcomeController>();
+
+  @override
+  void initState() {
+    super.initState();
+    createOpenBox();
+  }
+
+  void createOpenBox() async {
+    box1 = await Hive.openBox('logindata');
+    getdata();
+  }
+
+  void getdata() async {
+    if (box1.get('mssv') != null) {
+      mssv.text = box1.get('mssv');
+      isChecked = true;
+      setState(() {});
+    }
+    if (box1.get('password') != null) {
+      password.text = box1.get('password');
+      isChecked = true;
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +59,8 @@ class LoginForm extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: TextField(
+              controller: mssv,
               cursorColor: kPrimaryColor,
-              onChanged: (String text) => c.mssv.value = text,
               style: TextStyle(
                   // fontWeight: FontWeight.w500
                   color: Colors.black.withOpacity(0.8)),
@@ -42,11 +80,11 @@ class LoginForm extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: Obx(
               () => TextField(
+                controller: password,
                 obscureText: !c.showPass.isTrue,
                 enableSuggestions: false,
                 autocorrect: false,
                 cursorColor: Colors.grey,
-                onChanged: (String text) => c.password.value = text,
                 style: TextStyle(
                     // fontWeight: FontWeight.w500
                     color: Colors.black.withOpacity(0.8)),
@@ -70,6 +108,23 @@ class LoginForm extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 20),
             child: Align(
+                alignment: Alignment.center,
+                child: Row(
+                  children: [
+                    Text("Nhớ tài khoản.",
+                        style: TextStyle(color: kPrimaryColor)),
+                    Checkbox(
+                        value: isChecked,
+                        onChanged: (value) {
+                          isChecked = !isChecked;
+                          setState(() {});
+                        })
+                  ],
+                )),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Align(
               alignment: Alignment.centerRight,
               child: GestureDetector(
                 onTap: () {
@@ -89,7 +144,9 @@ class LoginForm extends StatelessWidget {
                 opacity: c.loading.isTrue ? 0.5 : 1,
                 duration: const Duration(milliseconds: 300),
                 child: TextButton(
-                  onPressed: () => c.login(),
+                  onPressed: () => {
+                    login(),
+                  },
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -113,5 +170,16 @@ class LoginForm extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void login() {
+    print(mssv.value.text);
+    if (isChecked) {
+      box1.put('mssv', mssv.value.text);
+      box1.put('password', password.value.text);
+    }
+    c.mssv.value = mssv.value.text as String;
+    c.password.value = password.value.text as String;
+    c.login();
   }
 }
