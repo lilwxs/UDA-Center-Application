@@ -120,8 +120,9 @@ class _LoginFormState extends State<LoginForm> {
                         isChecked = !isChecked;
                         setState(() {});
                       },
+                      activeColor: kPrimaryColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5), // set radius
+                        borderRadius: BorderRadius.circular(5),
                       ),
                     ),
                     const Text("Nhớ tài khoản.",
