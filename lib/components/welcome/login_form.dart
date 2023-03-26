@@ -8,6 +8,7 @@ import 'package:uda_std_application/components/welcome/forgot_password.dart';
 import 'package:uda_std_application/components/welcome/register_form.dart';
 import 'package:uda_std_application/controllers/welcome_controller.dart';
 import 'package:uda_std_application/theme/color.dart';
+import 'package:uda_std_application/views/welcome_view.dart';
 
 import '../../theme/input.dart';
 
@@ -107,39 +108,43 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20),
-            child: Align(
-                alignment: Alignment.center,
-                child: Row(
+            padding: EdgeInsets.only(top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Nhớ tài khoản.",
-                        style: TextStyle(color: kPrimaryColor)),
                     Checkbox(
-                        value: isChecked,
-                        onChanged: (value) {
-                          isChecked = !isChecked;
-                          setState(() {});
-                        })
+                      value: isChecked,
+                      onChanged: (value) {
+                        isChecked = !isChecked;
+                        setState(() {});
+                      },
+                      activeColor: kPrimaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                    const Text("Nhớ tài khoản.",
+                        style: TextStyle(color: kPrimaryColor)),
                   ],
-                )),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 20),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {
-                  Get.to(() => ForgotPass());
-                },
-                child: const Text(
-                  'Quên mật khẩu?',
-                  style: TextStyle(color: kPrimaryColor),
                 ),
-              ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => ForgotPass());
+                  },
+                  child: const Text(
+                    'Quên mật khẩu?',
+                    style: TextStyle(color: kPrimaryColor),
+                  ),
+                ),
+              ],
             ),
           ),
+
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 20, bottom: 10),
             child: Obx(
               () => AnimatedOpacity(
                 opacity: c.loading.isTrue ? 0.5 : 1,
