@@ -50,6 +50,7 @@ dependencies:
   flutter_native_splash: ^2.2.19
   hive:
   hive_flutter:
+  firebase_auth: ^4.3.0
 
 flutter_native_splash:
   color: "#ffffff"

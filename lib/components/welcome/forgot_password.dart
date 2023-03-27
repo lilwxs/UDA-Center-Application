@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:uda_std_application/components/welcome/phone_number_form.dart';
 import 'package:uda_std_application/controllers/welcome_controller.dart';
 import 'package:uda_std_application/theme/color.dart';
 import 'package:uda_std_application/theme/input.dart';
-import 'package:uda_std_application/views/welcome_view.dart';
 
 class ForgotPass extends StatelessWidget {
   ForgotPass({Key? key}) : super(key: key);
@@ -56,8 +56,9 @@ class ForgotPass extends StatelessWidget {
                 duration: const Duration(milliseconds: 300),
                 child: TextButton(
                   onPressed: () {
-                    c.forgotPassword();
-                    showAlertDialog(context);
+                    // c.forgotPassword();
+                    // showAlertDialog(context);
+                    Get.to(() => const PhoneNumberForm());
                   },
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   child: ClipRRect(
@@ -84,31 +85,31 @@ class ForgotPass extends StatelessWidget {
     );
   }
 
-  void showAlertDialog(BuildContext context) {
-    const String title = "Thông báo";
-    const String content = "Hãy kiểm tra email của bạn.";
-    const String okButtonText = "OK";
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text(title),
-      content: Text(content),
-      actions: [
-        TextButton(
-          child: Text(okButtonText),
-          onPressed: () {
-            Get.offNamed(WelcomeView.route);
-          },
-        ),
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
+  // void showAlertDialog(BuildContext context) {
+  //   const String title = "Thông báo";
+  //   const String content = "Hãy kiểm tra email của bạn.";
+  //   const String okButtonText = "OK";
+  //
+  //   // set up the AlertDialog
+  //   AlertDialog alert = AlertDialog(
+  //     title: Text(title),
+  //     content: Text(content),
+  //     actions: [
+  //       TextButton(
+  //         child: Text(okButtonText),
+  //         onPressed: () {
+  //           Get.offNamed(WelcomeView.route);
+  //         },
+  //       ),
+  //     ],
+  //   );
+  //
+  //   // show the dialog
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return alert;
+  //     },
+  //   );
+  // }
 }
