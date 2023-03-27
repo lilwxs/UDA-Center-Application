@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:uda_std_application/components/welcome/new_password_form.dart';
 import 'package:uda_std_application/components/welcome/phone_number_form.dart';
 import 'package:uda_std_application/theme/color.dart';
 import 'package:uda_std_application/theme/input.dart';
-import 'package:uda_std_application/views/welcome_view.dart';
 
 class OtpForm extends StatefulWidget {
   const OtpForm({Key? key}) : super(key: key);
@@ -72,7 +72,7 @@ class _OtpFormState extends State<OtpForm> {
 
                       // Sign the user in (or link) with the credential
                       await auth.signInWithCredential(credential);
-                      Get.toNamed(WelcomeView.route);
+                      Get.to(() => NewPasswordForm());
                     } catch (e) {
                       print('LỖI OTP CODE!');
                     }
