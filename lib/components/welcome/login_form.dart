@@ -5,12 +5,17 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:uda_std_application/components/welcome/forgot_password.dart';
+
+import 'package:uda_std_application/components/welcome/new_password_form.dart';
+import 'package:uda_std_application/components/welcome/phone_number_form.dart';
 import 'package:uda_std_application/components/welcome/register_form.dart';
+
 import 'package:uda_std_application/controllers/welcome_controller.dart';
 import 'package:uda_std_application/theme/color.dart';
 import 'package:uda_std_application/views/welcome_view.dart';
 
 import '../../theme/input.dart';
+import 'otp_form.dart';
 
 class LoginForm extends StatefulWidget {
   LoginForm({Key? key}) : super(key: key);
@@ -142,7 +147,6 @@ class _LoginFormState extends State<LoginForm> {
               ],
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 10),
             child: Obx(
