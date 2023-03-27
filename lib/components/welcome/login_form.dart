@@ -177,34 +177,22 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Obx(
-              () => AnimatedOpacity(
-                opacity: c.loading.isTrue ? 0.5 : 1,
-                duration: const Duration(milliseconds: 300),
-                child: TextButton(
-                  onPressed: () =>
-                      {Get.to(() => RegisterForm()), print('Đăng ký')},
-                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      width: double.infinity,
-                      color: kTextColor,
-                      child: Center(
-                        child: Text(
-                          'Đăng ký'.toUpperCase(),
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 14),
-                        ),
-                      ),
-                    ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Bạn chưa có tài khoản?'),
+              InkWell(
+                onTap: () {
+                  Get.to(() => RegisterForm());
+                },
+                child: Text(
+                  ' Đăng ký ngay',
+                  style: TextStyle(
+                    color: kPrimaryColor,
                   ),
                 ),
               ),
-            ),
+            ],
           ),
         ],
       ),
